@@ -1,5 +1,5 @@
 export const getGames = async () => {
-  const res = await fetch('https://www.mmobomb.com/api1/games');
+  const res = await fetch('https://cors.bridged.cc/https://www.mmobomb.com/api1/games');
 
   const games = await res.json();
 
