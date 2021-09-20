@@ -7,7 +7,7 @@ export default class GameCatalogClass extends Component {
   state = {
     loading: true,
     games: [],
-    searchTerm: ''
+    searchTerm: '',
   };
 
   async componentDidMount() {
@@ -16,17 +16,19 @@ export default class GameCatalogClass extends Component {
   }
 
   handleSearch = (event) => {
-    console.log('handleSearch called');
-  }
+    this.setState({ searchTerm: event.target.value });
+  };
 
   render() {
     const { loading, games, searchTerm } = this.state;
 
     if (loading) return <h1>Loading...</h1>;
 
-    return <>
-      <Search searchTerm={searchTerm} onSearch={this.handleSearch} />
-      <GameList games={games} />
-    </>;
+    return (
+      <>
+        <Search searchTerm={searchTerm} onSearch={this.handleSearch} />
+        <GameList games={games} />
+      </>
+    );
   }
 }
