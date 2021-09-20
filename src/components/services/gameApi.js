@@ -4,6 +4,7 @@ export const getGames = async () => {
   const games = await res.json();
 
   return games.map((game) => ({
+    id: game.id,
     name: game.title,
     image: game.thumbnail,
     platform: game.platform,
