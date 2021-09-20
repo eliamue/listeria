@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import Game from './Game';
 
 const GameList = ({ games }) => (
-  <ul aria-label="games" style={( display: 'flex', width: '90vw' )}>
+  <ul 
+    aria-label="games" 
+    style={{ 
+      display: 'flex', 
+      width: '90vw', 
+      flexWrap: 'wrap', 
+      justifyContent: 'center', 
+    }}>
     {games.map((game) => (
       <li key={game.id}>
         <Game {...game} />
