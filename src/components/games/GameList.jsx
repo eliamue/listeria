@@ -9,7 +9,8 @@ const GameList = ({ games }) => (
       display: 'flex', 
       width: '90vw', 
       flexWrap: 'wrap', 
-      justifyContent: 'center', 
+      justifyContent: 'center',
+      listStyle: 'none' 
     }}>
     {games.map((game) => (
       <li key={game.id}>
