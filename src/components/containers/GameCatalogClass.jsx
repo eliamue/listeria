@@ -16,7 +16,13 @@ export default class GameCatalogClass extends Component {
   }
 
   handleSearch = (event) => {
-    this.setState({ searchTerm: event.target.value });
+    this.setState({ searchTerm: event.target.value }), () => {
+      const { games, searchTerm } = this.state;
+      const filteredGames = games.filter((game) =>
+        game.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );4
+      this.setState({ games: filteredGames });
+    };
   };
 
   render() {
