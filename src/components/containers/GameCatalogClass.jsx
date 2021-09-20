@@ -7,6 +7,7 @@ export default class GameCatalogClass extends Component {
   state = {
     loading: true,
     games: [],
+    filteredGames: [],
     searchTerm: '',
   };
 
@@ -15,25 +16,29 @@ export default class GameCatalogClass extends Component {
     this.setState({ games, loading: false });
   }
 
-  handleSearch = (event) => {
-    this.setState({ searchTerm: event.target.value }), () => {
+  handleSearch = ({ target }) => {
+    this.setState({ searchTerm: target.value }, () => {
       const { games, searchTerm } = this.state;
+
       const filteredGames = games.filter((game) =>
         game.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );4
-      this.setState({ games: filteredGames });
-    };
+      );
+      this.setState({ filteredGames });
+    });
   };
 
   render() {
-    const { loading, games, searchTerm } = this.state;
+    const { loading, games, filteredGames, searchTerm } = this.state;
 
     if (loading) return <h1>Loading...</h1>;
 
     return (
       <>
         <Search searchTerm={searchTerm} onSearch={this.handleSearch} />
-        <GameList games={games} />
+        <GameList 
+          games={games} 
+          searchTerm={searchTerm} 
+          filteredGames={filteredGames} />
       </>
     );
   }
